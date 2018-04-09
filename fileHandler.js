@@ -1,3 +1,5 @@
+import html2canvas from 'html2canvas';
+
 // FUNCTIONS 
 let wavesurfer = WaveSurfer.create({
     container: '#waveform',
@@ -55,7 +57,12 @@ wavesurfer.load(audioFile);
 
     // Download Waveform Button
     // Container is #waveform
-
+    let waveformImage = html2canvas(document.querySelector("#waveform")).then(canvas => {
+        document.body.appendChild(canvas)
+    });
+    
+    document.getElementById ("imageText").innerHTML = waveformImage;
+    
 
 //  THIS PART WILL PROBABLY JUST BE SPLIT INTO DIFFERENT FILES DEPENDING ON WHAT THE USER CHOOSES 
 
