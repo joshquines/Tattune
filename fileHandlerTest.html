@@ -1,10 +1,19 @@
+
 <!DOCTYPE html>
 <html>
     <head>
-        <body>
-            <div id="audioFile">
-                dassfs
-            </div>
-        </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/2.0.5/wavesurfer.min.js"></script>
+        <script type="text/javascript" src="fileHandler.js"></script> 
     </head>
+    <body > 
+
+        <div id="audioFile">
+            <input type="file" id="audioFileUpload" multiple size="50"  onchange="uploadFile()">
+        </div>
+        <div id="waveform">wf</div>
+        <p id="uploadResponse">lel</p>
+        <p id="imageText">imglel</p>
+        
+    </body>
 </html>
+
