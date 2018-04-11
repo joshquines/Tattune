@@ -1,4 +1,5 @@
 .scrolling-wrapper {
+    padding:1em;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -7,4 +8,8 @@
 
 .scroll-card {
     display: inline-block;
+}
+
+.is-horizontal-center {
+    justify-content: center;
 }
