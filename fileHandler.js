@@ -21,6 +21,8 @@ function uploadFile(){
     txt += "I'm bout to do shit";
     document.getElementById("uploadResponse").innerHTML = txt;
     let fileType = audioFile.files[0].type;
+    txt += fileType;
+    document.getElementById("uploadResponse").innerHTML = txt;
 
 
     if ('files' in audioFile) {
@@ -34,8 +36,9 @@ function uploadFile(){
             document.getElementById("uploadResponse").innerHTML = "Please only select 1 file";
             // Terminate Script, Redirect
 
-        } else if (fileType != fileType.indexOf('audio') != -1){
-            document.getElementById("uploadResponse").innerHTML = "Needs to be audio bitch";
+        } else if (!(fileType.indexOf('audio') != -1)){
+            txt += "Needs to be audio bitch";
+            document.getElementById("uploadResponse").innerHTML = txt;
         }else {
             for (let i = 0; i < audioFile.files.length; i++) {
                 txt += "<br><strong>" + (i+1) + ". file</strong><br>";
@@ -57,11 +60,20 @@ function uploadFile(){
                     } 
                     else{
                         txt += "Upload of " + fileName + " was successful";
-                        document.getElementById ("uploadResponse").innerHTML = "Upload of " + fileName + " was successful";
+                        txt += audioFile;
+                        document.getElementById ("uploadResponse").innerHTML = txt;
 
                         // RENDER THE AUDIO FILE HERE
-                        wavesurfer.load(audioFile);
-                        //document.getElementById ("imageText").innerHTML = waveformImage;
+
+                        // This Reads the File
+                        let reader = new FileReader();
+                        //reader.onload = loadedCallback;
+                        //let fileContent = reader.readAsDataURL(audioFile);
+                        let fileContent = URL.createObjectURL(audioFile.files[0]);
+
+                        // This creates the waveform
+                        waveformImage = wavesurfer.load(fileContent);
+                        document.getElementById ("imageText").innerHTML = waveformImage;
 
                         /*
                         // Download Waveform Button
