@@ -72,17 +72,29 @@ function uploadFile(){
                         let fileContent = URL.createObjectURL(audioFile.files[0]);
 
                         // This creates the waveform
-                        waveformImage = wavesurfer.load(fileContent);
-                        document.getElementById ("imageText").innerHTML = waveformImage;
+                        let waveformImage = wavesurfer.load(fileContent);
+                        document.getElementById ("imageText").innerHTML = fileContent;
 
-                        /*
+                        
                         // Download Waveform Button
                         // Container is #waveform
-                        let waveformImage = html2canvas(document.querySelector("#waveform")).then(canvas => {
+                        let imageFile = html2canvas(document.querySelector("#waveform")).then(canvas => {
                             document.body.appendChild(canvas)
                         });
 
-                        document.getElementById ("imageText").innerHTML = waveformImage; */
+                        document.getElementById ("toSave").innerHTML = imageFile; 
+
+                        function downloadCanvas(link, canvasId, filename) {
+                            link.href = document.getElementById(canvasId).toDataURL();
+                            link.download = filename;
+                        }
+
+                        // test
+                        document.getElementById('waveform').addEventListener('click', function() {
+                            downloadCanvas(this, 'canvas', 'test.png');
+                        }, false);
+
+
                     }
                 }
             }
