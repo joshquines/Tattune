@@ -15,7 +15,7 @@
       <div class="navbar-brand">
         <a class="navbar-item">LOGO</a>
 
-        <div class="navbar-burger burger" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+        <div class="navbar-burger burger" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active')">
         <span></span>
           <span></span>
           <span></span>
@@ -24,22 +24,31 @@
 
       <div class="navbar-menu">
         <div class="navbar-start"></div>
-        <div class="navbar-end">
+        <div id ="navi" class="navbar-end">
+          <!-- options if user is not logged in -->
           <a class="navbar-item">log in</a>
           <a class="navbar-item">sign up</a>
+
+          <!-- options if user is logged in -->
         </div>
       </div> <!-- end navbar-menu -->
     </nav> <!-- end navbar -->
 
 
 
-    <!-- upload -->
+    <!-- main content -->
     <section class="section">
+      <!-- upload button -->
       <section class="section">
         <div class="container is-flex is-horizontal-center">
-          <figure class="image is-128x128">
-            <img src="http://www.arcdocendi.com/Forms/images/upload.png">
-          </figure>
+          <div class="file">
+            <label class="file-label">
+              <input class="file-input" type="file" name="resume">
+                <figure class="image is-128x128">
+                  <img src="http://www.arcdocendi.com/Forms/images/upload.png">
+                </figure>
+            </label>
+          </div>
         </div>
       </section>
 
@@ -47,7 +56,7 @@
       <div class="section is-hidden-mobile">
         <div class="container">
           <h6 class="title is-6 is-marginless">Recently created...</h6>
-          <div class="scrolling-wrapper">
+          <div id ="browse-photos-desktop" class="scrolling-wrapper">
             <div class="scroll-card">
               <figure class="box image is-128x128">
                 <img src="https://i.pinimg.com/originals/ef/1c/5d/ef1c5dd9c6c50bb5038fd6ae99c07e46.png">
@@ -76,7 +85,7 @@
     <section class="section is-hidden-desktop">
       <div class="container is-hidden-desktop">
         <h6 class="title is-6 is-marginless">Recently created...</h6>
-        <div class="scrolling-wrapper">
+        <div id="browse-photos-mobile" class="scrolling-wrapper">
           <div class="scroll-card">
             <figure class="box image is-96x96">
               <img src="https://i.pinimg.com/originals/ef/1c/5d/ef1c5dd9c6c50bb5038fd6ae99c07e46.png">
