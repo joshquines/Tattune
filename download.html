@@ -36,19 +36,30 @@
 <!-- main content -->
 <section class="section">
     <!-- image -->
-    <div class="level">
-        <div class="level-item">
-            <figure class="image is-128x128 is-flex is-horizontal-center">
-                <img src="http://qige87.com/data/out/59/wp-image-144658932.gif">
-            </figure>
+    <div class="section">
+        <div class="level">
+            <div class="level-item">
+                <figure class="image is-128x128 is-flex is-horizontal-center">
+                    <img src="http://qige87.com/data/out/59/wp-image-144658932.gif">
+                </figure>
+            </div>
         </div>
     </div>
-    <div class="container has-text-centered">
-        <div class="columns is-vcentered">
-            <div class="column">
-
-                <h6 class="title is-6 is-spaced">login or sign up to keep this!</h6>
-                <a class="button">download</a>
+    <!-- download button -->
+    <div class="section has-text-centered">
+        <h6 class="title is-6">login or sign up to save this!</h6>
+        <div class="buttons is-centered">
+            <div class="field is-grouped">
+                <!-- toggle is-hidden if user is not logged in-->
+                <div class="control">
+                    <button class="button is-primary is-hidden">save</button>
+                </div>
+                <div class="control">
+                    <button class="button is-primary">download</button>
+                </div>
+                <div class="control ">
+                    <button class="button is-danger is-hidden">discard</button>
+                </div>
             </div>
         </div>
     </div>

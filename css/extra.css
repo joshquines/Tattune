@@ -13,3 +13,9 @@
 .is-horizontal-center {
     justify-content: center;
 }
+
+.vcenter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
