@@ -2,13 +2,39 @@
 
 // UPLOAD THE AUDIO FILE HERE
 
+function download(){
+    let a = document.body.appendChild(
+        document.createElement("a")
+    );
+
+    let audioFile = document.getElementById("audioFileUpload");
+    for (let i = 0; i < audioFile.files.length; i++) {
+        let file = audioFile.files[i];
+        if ('name' in file) {
+            fileName = file.name;
+            fileName = fileName.slice(0, -4)
+    a.download = fileName;
+    let elements = document.getElementById("waveform").children;
+    let txt = "";
+    for (let i = 0; i < elements.length; i++){
+        txt += "counter: " + i + elements[i] + "<br>";
+        document.getElementById("yo").innerHTML = txt;
+    }
+    a.href = "data:text/html," + document.getElementById("waveform").children;
+    a.click();
+        }
+    }
+}
+
 function uploadFile(){
 
     let wavesurfer = WaveSurfer.create({
         container: '#waveform',
         waveColor: 'red',
-        progressColor: 'purple'
+        progressColor: 'purple',
+        responsive: 'true',
       });
+    let waver = wavesurfer;
     let txt = "";
 
     // Taken from: https://www.w3schools.com/jsref/prop_fileupload_files.asp
@@ -59,6 +85,9 @@ function uploadFile(){
 
                     } 
                     else{
+
+                        // 
+
                         txt += "Upload of " + fileName + " was successful";
                         txt += audioFile;
                         document.getElementById ("uploadResponse").innerHTML = txt;
@@ -73,26 +102,22 @@ function uploadFile(){
 
                         // This creates the waveform
                         let waveformImage = wavesurfer.load(fileContent);
-                        document.getElementById ("imageText").innerHTML = fileContent;
 
-                        
+
+                        let elements = document.getElementById("waveform").children;
+                        let txts = "";
+                        for (let i = 0; i < elements.length; i++){
+                            txt += "counter: " + i + elements[i] + "<br>";
+                            document.getElementById("yo").innerHTML = txts;
+                        }
+
+
+
                         // Download Waveform Button
                         // Container is #waveform
                         let imageFile = html2canvas(document.querySelector("#waveform")).then(canvas => {
                             document.body.appendChild(canvas)
                         });
-
-                        document.getElementById ("toSave").innerHTML = imageFile; 
-
-                        function downloadCanvas(link, canvasId, filename) {
-                            link.href = document.getElementById(canvasId).toDataURL();
-                            link.download = filename;
-                        }
-
-                        // test
-                        document.getElementById('waveform').addEventListener('click', function() {
-                            downloadCanvas(this, 'canvas', 'test.png');
-                        }, false);
 
 
                     }
@@ -102,33 +127,3 @@ function uploadFile(){
     } 
 }
 
-
-
-
-// RENDER THE AUDIO FILE HERE
-/*
-wavesurfer.load(audioFile);
-    // Download Waveform Button
-    // Container is #waveform
-    let waveformImage = html2canvas(document.querySelector("#waveform")).then(canvas => {
-        document.body.appendChild(canvas)
-    });
-    
-    document.getElementById ("imageText").innerHTML = waveformImage; */
-    
-   
-    
-
-//  THIS PART WILL PROBABLY JUST BE SPLIT INTO DIFFERENT FILES DEPENDING ON WHAT THE USER CHOOSES 
-
-// SAVE WAVEFORM
-
-    // STORE INTO DATABASE HERE
-
-// DOWNLOAD WAVEFORM
-
-    // SAVE FROM DIV 
-    // STORE INTO DATABASE HERE 
-
-
-// 
