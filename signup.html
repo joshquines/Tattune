@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-bottom">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tattune | View Your Music</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <div class="level">
+            <div class="level-item">
+                <h1 class="title is-1">LOGO</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section">
+    <div class="container" style="max-width:250px;">
+        <!-- username -->
+        <div class="field">
+            <label class="label">Username</label>
+            <!-- when user enters appropriate username add an icon on the right-->
+            <div class="control has-icons-left has-icons-right">
+                <!-- if user enters appropriate username add checkmark icon & turn field box green -->
+                <input id="username-signup" class="input is-success" type="text" placeholder="e.g. iamcool69" />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
+            <p class="help">must be at least 3 characters long</p>
+        </div>
+
+        <!-- password -->
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left">
+                <input id="password-signup" class="input" type="password" placeholder="password">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+            <p class="help">must be at least 8 characters long</p>
+        </div>
+
+        <!-- sign up button -->
+        <div class="level is-marginless">
+            <div class="level-item">
+                <div class="field has-text-centered">
+                    <div class="control">
+                        <button class="button is-primary">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="lib/main.js"></script>
+</body>
+</html>
