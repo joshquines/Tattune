@@ -7,9 +7,19 @@ const mongoose = require('mongoose');
 const ObjectID = require('mongodb').ObjectID;
 const Post = require('./lib/Post')
 const waveSurf = require('./lib/fileHandler.js');
+const moment = require('moment');
+
+let session = require('express-session');
+
+// req.session.user = "alvin";
+
 
 
 const app = express();
+
+app.use(session({secret:"9aduoshbj1082hd8dowhualj", resave:false, saveUninitialized:true}));
+
+// app.use(bodyParser());
 
 mongoose.connect('mongodb://localhost/test', function(err){
 	if(err){
@@ -33,6 +43,7 @@ let upload = multer({
     checkFileType(file,cb);
   }
 }).single('myAudio');
+
 
 
 // Check File type
@@ -82,7 +93,9 @@ app.get('/',checkIfLoggedIn(),(req,res)=>res.render('fileHandlerTest'));
 
 // Upload a file to server and registers it as a post in DB
 app.post('/upload',(req,res)=>{
-  console.log("upload request")
+  console.log("upload request");
+
+  // create post via post Schema
   upload(req,res,(err)=>{
     console.log(req.file.filename);
     if(err){
@@ -101,39 +114,44 @@ app.post('/upload',(req,res)=>{
         });
       }
       else{
-
-        // create post via post Schema
-          // to do
-
-          let post = new Post();
-          post.post_id = req.file.filename;
-          post.filepath = "test";
-          post.author = "noobs";
-          post.title = "newnew";
-          post.date = "1231234";
-
-          post.save(function(err){
-            if(err){
-              console.log(err);
-              return res.status(500).send();
-            }
-            else{
-              console.log('file uploaded');
-              return res.status(200).send();
-            }
-          })
-
-
         // res.render('create',{
         //   msg: 'File Uploaded!',
         //   file: `${req.file.filename}`
         // });
+
+        let post = new Post();
+        let title = req.title;
+
+
+          console.log(req);
+          post.filepath = req.file.filename;
+          post.post_id = req.file.filename;
+          post.author = req.session.username;
+          post.title = req.body.title;
+          post.date = Date.now();
+
+          post.save(function(err){
+            if(err){
+              console.log("FAILED");
+              console.log(err);
+              return res.status(500).send();
+            }
+            else{
+              console.log("sent to db");
+              console.log(post);
+              return res.status(200).send();
+            }
+          });
+
       }
     }
   }
 );
-}
-);
+
+
+
+
+});
 
 // Retrieves the server filepath of a file based on post_id and displays it
 app.get('/post',(req,res)=>{
