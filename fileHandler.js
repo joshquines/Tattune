@@ -40,6 +40,8 @@ function download(){
 
 function uploadFile(){
 
+    // Get time
+
     let wavesurfer = WaveSurfer.create({
         container: '#waveform',
         waveColor: 'green',
@@ -103,9 +105,11 @@ function uploadFile(){
 
                         // Download Waveform Button
                         // Container is #waveform
+                        /*
                         let imageFile = html2canvas(document.querySelector("div > wave > canvas")).then(canvas => {
                             document.body.appendChild(canvas)
-                        });
+                        });     */         
+
                     }
                 }
             }
