@@ -1,17 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+var User = require('../lib/User');
+//var userSchema = new mongoose.Schema({
+//    username: {type: String, unique: true},
+//    password: {type: String},
+//    firstname: String,
+//    lastname: String
+//});
 
-
-var userSchema = new mongoose.Schema({
-    username: {type: String, unique: true},
-    password: {type: String},
-    firstname: String,
-    lastname: String
-});
-
-var User = mongoose.model('myuser', userSchema);
+//var User = mongoose.model('myuser', userSchema);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -30,11 +28,25 @@ router.post('/login', function(req, res){
         if(!user){
             return res.status(404).send();
         }
-       
+        req.session.user = user;
         return res.status(200).send();
     })
 
 });
+
+router.get('/dashboard', function(req, res){
+    if(!req.session.user){
+        //return res.status(401).send();
+        return res.redirect('/login');
+    }
+
+    return res.status(200).send("Welcome");
+})
+
+router.get('/logout', function(req, res){
+    req.session.destroy();
+    return res.status(200).send();
+})
 
 router.post('/register', function(req, res){
     var username = req.body.username;
