@@ -11,8 +11,11 @@
 
 </head>
 <body>
+  <h1><%= file.title %></h1>
+  <h2>Uploaded on <%= file.date.toISOString().slice(0,10).replace(/-/g,"/"); %> </h2>
 <audio controls>
-  <source src="<%= typeof file !='undefined' ? file:''%>" type="audio/<%= filetype %>">
+  <source src="/<%= file.post_id %>" type="audio/<%= filetype %>">
 </audio>
+
 </body>
 </html>

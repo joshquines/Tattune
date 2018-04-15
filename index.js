@@ -8,7 +8,6 @@ const ObjectID = require('mongodb').ObjectID;
 const Post = require('./lib/Post')
 const waveSurf = require('./lib/fileHandler.js');
 const moment = require('moment');
-
 let session = require('express-session');
 
 // req.session.user = "alvin";
@@ -93,7 +92,6 @@ app.get('/',checkIfLoggedIn(),(req,res)=>res.render('fileHandlerTest'));
 
 // Upload a file to server and registers it as a post in DB
 app.post('/upload',(req,res)=>{
-  console.log("upload request");
 
   // create post via post Schema
   upload(req,res,(err)=>{
@@ -106,7 +104,6 @@ app.post('/upload',(req,res)=>{
     }
     else
     {
-      console.log("uploading...")
       if(req.file==undefined){
         console.log("Error: No File Selected!'");
         res.render('index',{
@@ -122,11 +119,9 @@ app.post('/upload',(req,res)=>{
         let post = new Post();
         let title = req.title;
 
-
-          console.log(req);
           post.filepath = req.file.filename;
           post.post_id = req.file.filename;
-          post.author = req.session.username;
+          // post.author = req.session.user.username;
           post.title = req.body.title;
           post.date = Date.now();
 
@@ -153,12 +148,16 @@ app.post('/upload',(req,res)=>{
 
 });
 
+app.get('/comment',(req,res)=>{
+
+});
+
 // Retrieves the server filepath of a file based on post_id and displays it
-app.get('/post',(req,res)=>{
+app.get('/post/:post_id',(req,res)=>{
   console.log('generating post');
 
-  let query = Post.findOne({'post_id':'undefined-1523758761020.mp3'});
-  query.select('post_id');
+  let query = Post.findOne({'post_id':req.params.post_id});
+  query.select('post_id filename title date');
 
   query.exec(function(err,post){
     if(err){
@@ -168,8 +167,10 @@ app.get('/post',(req,res)=>{
     }
     else{
       console.log(post.post_id);
+
+
       res.render('post',{
-        file: post.post_id,
+        file: post,
         filetype: 'mp3'
       });
     }
