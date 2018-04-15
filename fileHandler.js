@@ -13,9 +13,10 @@ function download(){
     }).then(canvas => {
         console.log("html2canvas");
         imgURL = canvas.toDataURL("image/png");
+        
         img = document.createElement("img");
         img.src = imgURL;
-        document.body.appendChild(img);
+        //document.body.appendChild(img);
   
       let audioFile = document.getElementById("audioFileUpload");
       for (let i = 0; i < audioFile.files.length; i++) {

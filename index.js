@@ -77,6 +77,19 @@ function checkIfLoggedIn(){
   }
 }
 
+// FileHandler Upload / Wave Generator
+function waveGenerator(){
+  let wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'green',
+    progressColor: 'purple',
+    responsive: 'false',
+    barWidth: '1',
+    scrollParent: 'true'
+  });
+  
+}
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -200,12 +213,6 @@ app.get('/discover',function(req,res){
     }
   });
 });
-
-
-
-
-
-
 
 //Start the server
 app.listen(1337);
