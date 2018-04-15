@@ -7,9 +7,7 @@ function loadWave() {
 function download(){
 
     let waveimg = document.getElementById("waveform");
-  
-    let img = null;
-  
+    let img = null; 
     let imageFile = html2canvas(waveimg,{
        allowTaint: true
     }).then(canvas => {
@@ -27,13 +25,16 @@ function download(){
               fileName = fileName.slice(0, -4)
           }
       }
-  
       let a = document.body.appendChild(
         document.createElement("a")
       );
       a.download = fileName;
       a.href = img.src;
       a.click();
+
+      // img.src is the actual file
+      // Store img.src here into the DB
+
     });
 }
 
@@ -52,17 +53,9 @@ function uploadFile(){
 
     // Taken from: https://www.w3schools.com/jsref/prop_fileupload_files.asp
     let audioFile = document.getElementById("audioFileUpload");
-    document.getElementById("uploadResponse").innerHTML = txt;
-    txt += "I uploaded stuff2";
-    document.getElementById("uploadResponse").innerHTML = txt;
 
     // Limit File Size
-    txt += "I'm bout to do shit";
-    document.getElementById("uploadResponse").innerHTML = txt;
     let fileType = audioFile.files[0].type;
-    txt += fileType;
-    document.getElementById("uploadResponse").innerHTML = txt;
-
 
     if ('files' in audioFile) {
         if (audioFile.files.length == 0) {
@@ -80,13 +73,10 @@ function uploadFile(){
             document.getElementById("uploadResponse").innerHTML = txt;
         }else {
             for (let i = 0; i < audioFile.files.length; i++) {
-                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
                 let file = audioFile.files[i];
                 if ('name' in file) {
                     // txt += "name: " + file.name + "<br>";
                     fileName = file.name;
-                    txt += fileName;
-                    document.getElementById("uploadResponse").innerHTML = txt;
                 }
                 if ('size' in file) {
 
@@ -99,10 +89,8 @@ function uploadFile(){
                     } 
                     else{
 
-                        txt += "Upload of " + fileName + " was successful";
-                        txt += audioFile;
-
                         // Success Message to HTML Page
+                        txt += "Upload of " + fileName + " was successful";
                         document.getElementById ("uploadResponse").innerHTML = txt;
 
                         // RENDER THE AUDIO FILE HERE
@@ -118,8 +106,6 @@ function uploadFile(){
                         let imageFile = html2canvas(document.querySelector("div > wave > canvas")).then(canvas => {
                             document.body.appendChild(canvas)
                         });
-
-                        //loadWave();
                     }
                 }
             }
