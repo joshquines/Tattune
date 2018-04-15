@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-bottom">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tattune | View Your Music</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/extra.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+</head>
+<body>
+
+  <% posts.forEach(function(post){ %>
+
+<a href="/post/<%= typeof post.post_id !='undefined' ? post.post_id:''%>">LOL</a>
+<audio controls>
+
+  <source src="<%= typeof post.post_id !='undefined' ? post.post_id:''%>" type="audio/<%= filetype %>">
+</audio>
+
+<br>
+  <% }); %>
+  <div id="waveform" style="opacity: 0;">
+  </div>
+</body>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+     // your code here
+
+         let posts = <%-JSON.stringify(posts) %>;
+
+         posts.forEach(function(post){
+           let wavesurfer = WaveSurfer.create({
+                 container: '#waveform',
+                 waveColor: 'green',
+                 progressColor: 'purple',
+                 responsive: 'false',
+                 barWidth: '1',
+                 scrollParent: 'true'
+               });
+           wavesurfer.load(post.post_id);
+
+
+
+         });
+  }, false);
+
+</script>
+
+</html>
