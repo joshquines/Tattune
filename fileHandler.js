@@ -40,6 +40,8 @@ function download(){
 
 function uploadFile(){
 
+
+
     // Get time
 
     let wavesurfer = WaveSurfer.create({
@@ -108,7 +110,11 @@ function uploadFile(){
                         /*
                         let imageFile = html2canvas(document.querySelector("div > wave > canvas")).then(canvas => {
                             document.body.appendChild(canvas)
-                        });     */         
+                        });     */       
+                        
+                        document.getElementById('waveform').onHTMLUpdate = download() {
+                            alert(this.innerHTML);
+                        }
 
                     }
                 }
