@@ -5,19 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tattune | View Your Music</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/extra.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/extra.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
 </head>
 <body>
 
 
-  <div
 
   <% posts.forEach(function(post){ %>
 
-<a href="/post/<%= typeof post.post_id !='undefined' ? post.post_id:''%>">LOL</a>
+<a href="/post/<%= typeof post.post_id !='undefined' ? post.post_id:''%>"><%=post.post_id%></a>
 
 
   <img src="<%= typeof post.post_id !='undefined' ? post.post_id:''%>" type="image/<%= filetype %>">
@@ -25,6 +24,8 @@
 
 <br>
   <% }); %>
+
+
 </body>
 
 
