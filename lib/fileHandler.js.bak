@@ -1,4 +1,4 @@
-// FUNCTIONS 
+// FUNCTIONS
 
 function loadWave() {
     document.getElementById("op").innerHTML='<object type="text/html" data="fileHandlerTest.html" ></object>';
@@ -7,9 +7,9 @@ function loadWave() {
 function download(){
 
     let waveimg = document.getElementById("waveform");
-  
+
     let img = null;
-  
+
     let imageFile = html2canvas(waveimg,{
        allowTaint: true
     }).then(canvas => {
@@ -17,8 +17,8 @@ function download(){
         imgURL = canvas.toDataURL("image/png");
         img = document.createElement("img");
         img.src = imgURL;
-        document.body.appendChild(img);
-  
+        // document.body.appendChild(img);
+
       let audioFile = document.getElementById("audioFileUpload");
       for (let i = 0; i < audioFile.files.length; i++) {
           let file = audioFile.files[i];
@@ -27,7 +27,7 @@ function download(){
               fileName = fileName.slice(0, -4)
           }
       }
-  
+
       let a = document.body.appendChild(
         document.createElement("a")
       );
@@ -90,13 +90,13 @@ function uploadFile(){
                 }
                 if ('size' in file) {
 
-                    // Check if filesize over 10MB 
+                    // Check if filesize over 10MB
                     if (file.size > 10000000){
                         txt += "Filesize: " + file.size + " bytes is too large. <br>";
                         document.getElementById("uploadResponse").innerHTML = txt;
                         // Terminate Script, Redirect
 
-                    } 
+                    }
                     else{
 
                         txt += "Upload of " + fileName + " was successful";
@@ -124,6 +124,5 @@ function uploadFile(){
                 }
             }
         }
-    } 
+    }
 }
-

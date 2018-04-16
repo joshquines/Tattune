@@ -7,7 +7,7 @@ const multer = require('multer');
 const mongoose = require('mongoose');
 const ObjectID = require('mongodb').ObjectID;
 const Post = require('./lib/Post')
-const waveSurf = require('./lib/fileHandler.js');
+// const waveSurf = require('./lib/fileHandler.js');
 // const moment = require('moment');
 
 let session = require('express-session');
@@ -34,7 +34,8 @@ var app = express();
 
 // view engine setup EJS
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use('/discover',express.static('./public'));
+app.use('/',express.static('./views'));
 
 
 // view engine setup

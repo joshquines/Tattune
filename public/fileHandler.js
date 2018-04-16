@@ -38,7 +38,7 @@ function download(){
       document.body.appendChild(x);
 
 
-      let b = dataURItoBlob(document.getElementById('myWave').src);
+      let b = dataURItoBlob(x.src);
       let i = blobToFile(b,"myWave");
 
       console.log(b);

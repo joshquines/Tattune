@@ -1,53 +1,31 @@
 @charset "utf-8";
-
-// Customization
-
-// You can easily customize Bulma with your own variables.
-// Just uncomment the following block to see the result.
-
-//$primary: $yellow;
-//$primary-invert: $yellow-invert;
-
-
-// 1. Import the initial variables
 @import "../node_modules/bulma/sass/utilities/initial-variables";
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url(https://fonts.googleapis.com/css?family=Comfortaa) format('truetype');
+}
+
+
+// Google fonts
 
 // blacks
 $bistre: #352B26;
 $roseebony: #5B4A42;
+
+// blues
+$pewter: #95B2B8;
+
+// purples
+$pansy: #70163C;
+$dustyrose: #FFDBE1;
 
 // yellows
 $oldgold: #D8B647;
 $lemonchiffon: #FFF5D1;
 $sunglow: #FECB2F;
 
-// browns
-$russet: #7C4C26;
-
-// Update the sans-serif font family
-$family-sans-serif: "Helvetica", "Arial", sans-serif;
-
-// 3. Set the derived variables
-// Use the new pink as the primary color
-$primary: $sunglow;
-
-// 4. Import the rest of Bulma
+// Set the derived variables
+$primary: $pansy;
+// Import the rest of Bulma
 @import "../node_modules/bulma/bulma";
-
-html, footer {
-  background-color:$bistre;
-  color: $white;
-}
-
-body, strong, b {
-  color: $white;
-}
-
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
-  color: $white;
-}
