@@ -7,6 +7,7 @@
     <title>Tattune | View Your Music</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/extra.css">
+    <script type="text/javascript" src="interactions.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
 </head>
@@ -15,41 +16,39 @@
     <div class="container">
         <div class="level">
             <div class="level-item">
-                <h1 class="title is-1">LOGO</h1>
+                <img src="logo-big.png" height="300" width="300">
             </div>
         </div>
     </div>
-</section>
-
-<div class="section">
-    <div class="container" style="max-width:250px;">
+    <div class="container" style="max-width:250px;padding-top:1em;">
         <!-- username -->
         <div class="field">
             <label class="label">Username</label>
             <!-- when user enters appropriate username add an icon on the right-->
             <div class="control has-icons-left has-icons-right">
                 <!-- if user enters appropriate username add checkmark icon & turn field box green -->
-                <input id="username-signup" class="input is-success" type="text" placeholder="e.g. iamcool69" />
+                <input id="username-signup" class="input" type="text" placeholder="e.g. iamcool69" oninput="styleUsernameSignup()"/>
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
+                <!--
                 <span class="icon is-small is-right">
                     <i class="fas fa-check"></i>
-                </span>
+                </span> -->
             </div>
-            <p class="help">must be at least 3 characters long</p>
+            <p class="help">must be alphanumeric and at least 3 characters long</p>
         </div>
 
         <!-- password -->
         <div class="field">
             <label class="label">Password</label>
             <div class="control has-icons-left">
-                <input id="password-signup" class="input" type="password" placeholder="password">
+                <input id="password-signup" class="input" type="password" placeholder="password" oninput="stylePasswordSignup()">
                 <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                 </span>
             </div>
-            <p class="help">must be at least 8 characters long</p>
+            <p class="help">must be alpha numeric and at least 8 characters long</p>
         </div>
 
         <!-- sign up button -->
@@ -63,7 +62,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script type="text/javascript" src="lib/main.js"></script>
 </body>

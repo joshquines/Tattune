@@ -6,8 +6,7 @@
   src: url(https://fonts.googleapis.com/css?family=Comfortaa) format('truetype');
 }
 
-
-// Google fonts
+// $navbar-height: 5rem;
 
 // blacks
 $bistre: #352B26;
@@ -17,15 +16,29 @@ $roseebony: #5B4A42;
 $pewter: #95B2B8;
 
 // purples
-$pansy: #70163C;
+$tattunepurple: #70163C;
 $dustyrose: #FFDBE1;
 
+// oranges
+$tattuneorange: #fc5a59;
 // yellows
 $oldgold: #D8B647;
 $lemonchiffon: #FFF5D1;
 $sunglow: #FECB2F;
+$tattune-yellow: #fdcc36;
 
 // Set the derived variables
-$primary: $pansy;
+$primary: $tattunepurple;
+$body-background-color: $black-bis;
+$navbar-background-color: $primary;
+$navbar-item-color: $white;
+$navbar-item-hover-background-color: $tattuneorange;
+$text: $white;
+$text-strong:$white;
+$link: $tattune-yellow;
+$link-active: $tattune-yellow;
+$title-color: $white;
+$subtitle-color: $white;
+$label-color: $white;
 // Import the rest of Bulma
 @import "../node_modules/bulma/bulma";

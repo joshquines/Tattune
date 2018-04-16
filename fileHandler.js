@@ -61,12 +61,12 @@ function uploadFile(){
     if ('files' in audioFile) {
         if (audioFile.files.length == 0) {
             txt = "Select one or more files.";
-            document.getElementById("uploadResponse").innerHTML = "Select one or more files.";
+            document.getElementById("uploadResponse").innerHTML = "Select a file.";
             // Terminate script, Redirect
 
         } else if (audioFile.files.length > 1){
             txt = "Please only select 1 file";
-            document.getElementById("uploadResponse").innerHTML = "Please only select 1 file";
+            document.getElementById("uploadResponse").innerHTML = "Please only select 1 file.";
             // Terminate Script, Redirect
 
         } else if (!(fileType.indexOf('audio') != -1)){
