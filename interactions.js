@@ -8,10 +8,10 @@ setUserLoggedIn(false);
 // if not -> insert "log in" and "sign up" items
 function toggleNavItems() {
     if(userLoggedIn) {
-        document.getElementById("navi").innerHTML = "<a class=\"navbar-item\" href=\"tattune.stream/library\">waveforms</a>\n" +
-            "            <a class=\"navbar-item\" onclick=\"logout()\" href=\"tattune.stream/index\">logout</a>\n";
+        document.getElementById("navi").innerHTML = "<a class=\"navbar-item\" href=\"tattune.stream/library.html\">waveforms</a>\n" +
+            "            <a class=\"navbar-item\" onclick=\"logout()\" href=\"tattune.stream/index.html\">logout</a>\n";
     } else {
-        document.getElementById("navi").innerHTML = "<a class=\"navbar-item\" href=\"tattune.stream/login\">log in</a>\n" +
+        document.getElementById("navi").innerHTML = "<a class=\"navbar-item\" href=\"tattune.stream/login.html\">log in</a>\n" +
             "            <a class=\"navbar-item\" href=\"\">sign up</a>";
     }
 }
