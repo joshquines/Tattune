@@ -15,10 +15,10 @@
   <% posts.forEach(function(post){ %>
 
 <a href="/post/<%= typeof post.post_id !='undefined' ? post.post_id:''%>">LOL</a>
-<audio controls>
 
-  <source src="<%= typeof post.post_id !='undefined' ? post.post_id:''%>" type="audio/<%= filetype %>">
-</audio>
+
+  <img src="<%= typeof post.post_id !='undefined' ? post.post_id:''%>" type="image/<%= filetype %>">
+
 
 <br>
   <% }); %>

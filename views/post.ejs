@@ -13,9 +13,20 @@
 <body>
   <h1><%= file.title %></h1>
   <h2>Uploaded on <%= file.date.toISOString().slice(0,10).replace(/-/g,"/"); %> </h2>
-<audio controls>
-  <source src="/<%= file.post_id %>" type="audio/<%= filetype %>">
-</audio>
+
+  <img src="/<%= file.post_id %>" type="image/<%= filetype %>">
+
+
+
+<br>
+
+<form action='/comment' name="<%=file.post_id%>" method='post'>
+  <input type='text'name="comment"></input>
+  <input type='submit'></submit>
+</form>
+
+
+
 
 </body>
 </html>

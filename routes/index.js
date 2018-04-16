@@ -14,6 +14,7 @@ const multer = require('multer');
 // const mongoose = require('mongoose');
 const ObjectID = require('mongodb').ObjectID;
 const Post = require('../lib/Post')
+const Comment = require('../lib/Comment')
 // const waveSurf = require('../lib/fileHandler.js');
 // const moment = require('moment');
 
@@ -23,23 +24,35 @@ const Post = require('../lib/Post')
 //     res.render('index', { title: 'Express' });
 // });
 
+// Retrieve Log In Page
+router.get('/login', function(req,res){
+  res.render('login');
+})
+
+
+// Submit Login Credentials
 router.post('/login', function(req, res){
+    console.log(req);
     var username = req.body.username;
     var password = req.body.password;
+    console.log(username);
+    console.log(password);
 
     User.findOne({username: username, password: password}, function(err, user){
+
         if(err){
             console.log(err);
             return res.status(500).send();
         }
-        if(!user){
-            return res.status(404).send();
-            res.render('index0');
+        else if(user==null){
+            // return res.status(404).send();
+            return res.render('login');
+        }else{
 
-        }
         req.session.user = user;
-        return res.status(200).send();
-    })
+        return res.render('index');
+      }
+    });
 
 });
 
@@ -57,24 +70,29 @@ router.get('/logout', function(req, res){
     return res.status(200).send();
 })
 
+// Retrieve registration page
+router.get('/register', function(req, res){
+  res.render('signup');
+});
+
+
+// Submit registration request
 router.post('/register', function(req, res){
     var username = req.body.username;
     var password = req.body.password;
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
+    console.log(username);
+    console.log(password);
 
     var newUser = new User();
     newUser.username = username;
     newUser.password = password;
-    newUser.firstname = firstname;
-    newUser.lastname = lastname;
 
     newUser.save(function(err, savedUser){
         if(err){
             console.log(err);
-            return res.status(500).send();
+            // return res.status(500).send();
         }
-        return res.status(200).send();
+        return res.render('login');
     })
 })
 
@@ -85,16 +103,18 @@ router.post('/register', function(req, res){
 let storage = multer.diskStorage({
   destination: './public/',
   filename: function(reg,file,cb){
-    cb(null,file.myImage+'-'+Date.now()+path.extname(file.originalname));
+    cb(null,file.myImage+'-'+Date.now()+'.png');
   }
 });
 
 // parser for uploads via Multer
-let upload = multer({
+const upload = multer({
   storage: storage,
   // fileFilter:function(req,file,cb){
   //   checkFileType(file,cb);
   // }
+// }).single('myWave');
+
 }).single('myWave');
 
 
@@ -208,10 +228,6 @@ router.post('/upload',(req,res)=>{
 
 });
 
-// Add a comment to an existing post.
-router.get('/comment',(req,res)=>{
-
-});
 
 // Retrieves the server filepath of a file based on post_id and displays it
 router.get('/post/:post_id',(req,res)=>{
@@ -229,14 +245,58 @@ router.get('/post/:post_id',(req,res)=>{
     else{
       console.log(post.post_id);
 
-
       res.render('post',{
         file: post,
-        filetype: 'mp3'
+        filetype: 'mp3',
+        // comments: comments;
       });
     }
   });
+
+
 });
+
+
+// Post Comment
+// Add a comment to an existing post.
+router.post('/comment',(req,res)=>{
+  let comment = new Comment();
+
+  let link = req.headers.referer;
+  let parsed = link.split('/');
+  let id = parsed[parsed.length-1];
+  comment.post_id = id;
+  console.log(id);
+  comment.comment = req.body.comment;
+  // comment.author = req.session.user.username;
+  // comment.post_id = req;
+  comment.date = Date.now();
+
+  comment.save(function(err){
+    if(err){
+      console.log("FAILED");
+      console.log(err);
+      // return res.status(500).send();
+    }
+    else{
+      console.log("sent to db");
+      // console.log(post);
+      // res.status(200).send({
+      //   comment: comment
+      // });
+      // console.log(req);
+      // res.redirect('/post/undefined-1523845557148.png',{
+      //   comment: comment
+      // });
+
+      let link = req.headers.referer;
+
+      res.redirect(link);
+
+    }
+  });
+});
+
 
 
 
@@ -252,11 +312,11 @@ router.get('/discover',function(req,res){
       });
     }
     else{
-      console.log(posts);
+      // console.log(posts);
 
       res.render('discover',{
         posts: posts,
-        filetype: 'mp3'
+        filetype: 'png'
       });
     }
   });

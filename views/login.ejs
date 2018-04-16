@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/extra.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-    <script src="./lib/fileHandler.js">
+    <!-- <script src="./lib/f ileHandler.js"> -->
 </head>
 <body>
     <section class="section">
         <div class="container">
             <div class="level is-marginless">
                 <div class="level-item">
-                    <h1 class="title is-1">LOGO</h1>
+                    <h1 class="title is-1">Login</h1>
                 </div>
             </div>
         </div>
@@ -23,10 +23,11 @@
 
     <div class="section">
         <div class="container" style="max-width:250px;">
+          <form action='/login' method='post'>
             <!-- username -->
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="username" placeholder="username" />
+                    <input class="input" name="username" type="username" placeholder="username" />
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -36,7 +37,7 @@
             <!-- password -->
             <div class="field">
                 <div class="control has-icons-left">
-                    <input class="input" type="password" placeholder="password">
+                    <input class="input" name="password" type="password" placeholder="password">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -48,23 +49,22 @@
                 <div class="level-item">
                     <div class="field has-text-centered">
                         <div class="control">
-                            <button class="button is-primary">Login</button>
+                            <input type="submit" class="button is-primary">
                         </div>
                     </div>
                 </div>
             </div>
+
+          </form>
             <div class="level is-marginless">
                 <div class="level-item">
-<<<<<<< HEAD
-                    <p class="help">or sign up <a href="">here</a></p>
-=======
-                    <p class="help">or sign up <a href="/signup.html">here</a></p>
->>>>>>> 5f60fd907fd8dc37d0cbaf3e888b5dde7a383146
+                    <p class="help">or Sign Up <a href="/register">here</a></p>
                 </div>
             </div>
         </div>
     </div>
+    </body>
+// <script type="text/javascript" src="lib/main.js"></script>
 
-<script type="text/javascript" src="lib/main.js"></script>
-</body>
+
 </html>

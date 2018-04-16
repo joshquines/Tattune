@@ -46,12 +46,13 @@ function download(){
 
       var request = new XMLHttpRequest();
       request.open("POST", "/upload",true);
-      request.setRequestHeader('Content-Type','multipart/form-data');
+      request.setRequestHeader('enctype','multipart/form-data');
       let data = new FormData();
       console.log(data);
       data.append('myWave',b);
       console.log(data);
       request.send(data);
+
 
 
       // a.click();

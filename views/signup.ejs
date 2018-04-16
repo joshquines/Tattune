@@ -15,7 +15,7 @@
     <div class="container">
         <div class="level">
             <div class="level-item">
-                <h1 class="title is-1">LOGO</h1>
+                <h1 class="title is-1">Register</h1>
             </div>
         </div>
     </div>
@@ -23,13 +23,14 @@
 
 <div class="section">
     <div class="container" style="max-width:250px;">
+        <form action='/register' method='post'>
         <!-- username -->
         <div class="field">
             <label class="label">Username</label>
             <!-- when user enters appropriate username add an icon on the right-->
             <div class="control has-icons-left has-icons-right">
                 <!-- if user enters appropriate username add checkmark icon & turn field box green -->
-                <input id="username-signup" class="input is-success" type="text" placeholder="e.g. iamcool69" />
+                <input id="username-signup" name="username" class="input is-success" type="text" placeholder="e.g. iamcool69" />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
@@ -44,7 +45,7 @@
         <div class="field">
             <label class="label">Password</label>
             <div class="control has-icons-left">
-                <input id="password-signup" class="input" type="password" placeholder="password">
+                <input name="password" id="password-signup" class="input" type="password" placeholder="password">
                 <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                 </span>
@@ -62,6 +63,14 @@
                 </div>
             </div>
         </div>
+
+        </form>
+        <div class="level is-marginless">
+            <div class="level-item">
+                <p class="help">or Log In <a href="/login">here</a></p>
+            </div>
+        </div>
+
     </div>
 </div>
 
