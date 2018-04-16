@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<!--- man there's really nothing more i hate than html style comments--> 
+
+<html class="has-navbar-fixed-bottom">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tattune | View Your Music</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+    <script type="text/javascript" src="fileHandler.js"></script> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <nav class="navbar is-primary is-fixed-bottom">
+      <div class="navbar-brand">
+        <a class="navbar-item">LOGO</a>
+
+        <div class="navbar-burger burger" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active')">
+        <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div> <!-- end navbar-brand -->
+
+      <div class="navbar-menu">
+        <div class="navbar-start"></div>
+        <div id ="navi" class="navbar-end">
+          <!-- options if user is not logged in -->
+          <a class="navbar-item">log in</a>
+          <a class="navbar-item">sign up</a>
+
+          <!-- options if user is logged in -->
+          <a class="navbar-item">view images</a>
+        </div>
+      </div> <!-- end navbar-menu -->
+    </nav> <!-- end navbar -->
+
+	
+
+    <!-- main content --> 
+	  <div class ="container is-fluid"> <!-- container for image grid--> 
+	  	<div class ="tile is-ancestor"> 
+			<div class="tile is-parent is-vertical">
+				<div class="tile is-child box">
+					<img src="<%= image_path%>"> 
+					<p class="title"><%= title%></p>
+					<p class="author"><%= author%></p>
+					<p class="description"><%= description%></p>
+				</div>
+
+				</div>
+	  		</div>
+		</div>
+	  
+	  
+	  <script type="text/javascript" src="lib/main.js"></script>
+	  
+  </body>
+</html>
